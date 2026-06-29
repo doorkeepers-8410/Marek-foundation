@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" type="image/png" sizes="32x32" href="upload/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="upload/favicon-16.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="upload/apple-touch-icon.png">
+    
+	<title>Impact</title>
+
+    <link rel="stylesheet" href="css/common-skeleton.min.css?" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/tooltip.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/font-awesome.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/elegant-font.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/page-builder.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="plugins/revslider/public/assets/css/rs6.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/style-core.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/kingster-style-custom.css" type="text/css" media="all" />
+
+    <link
+        rel="stylesheet"
+        id="gdlr-core-google-font-css"
+        href="https://fonts.googleapis.com/css?family=Jost%3A100%2C200%2C300%2Cregular%2C500%2C600%2C700%2C800%2C900%2C100italic%2C200italic%2C300italic%2Citalic%2C500italic%2C600italic%2C700italic%2C800italic%2C900italic%7CMontserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&amp;subset=cyrillic%2Clatin%2Clatin-ext%2Ccyrillic-ext%2Cvietnamese&amp;ver=5.5.1"
+        type="text/css"
+        media="all"
+    />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" property="stylesheet" media="all" type="text/css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+	
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+  // Select BOTH desktop and mobile menus
+  const menuLinks = document.querySelectorAll(
+    ".sf-menu li, .m-menu li"
+  );
+
+  menuLinks.forEach(li => {
+    const link = li.querySelector("a");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+
+    // Normalize
+    if (!href || href === "#") return;
+
+    if (href === currentPage) {
+      li.classList.add("current-menu-item");
+
+      // Also highlight parent if dropdown (future-proof)
+      let parent = li.parentElement.closest("li");
+      if (parent) {
+        parent.classList.add("current-menu-item");
+      }
+    } else {
+      li.classList.remove("current-menu-item");
+    }
+  });
+});
+</script>
+	
+<body class="home page-template-default page page-id-6208 gdlr-core-body tribe-no-js kingster-body kingster-body-front kingster-full kingster-with-sticky-navigation kingster-sticky-navigation-no-logo kingster-blockquote-style-1 gdlr-core-link-to-lightbox" >
+	<div class="kingster-mobile-header-wrap">
+        <div class="kingster-mobile-header kingster-header-background kingster-style-slide kingster-sticky-mobile-navigation" id="kingster-mobile-header">
+            <div class="kingster-mobile-header-container kingster-container clearfix">
+                <div class="kingster-logo kingster-item-pdlr kingster-mobile-logo-center">
+                    <div class="kingster-logo-inner">
+                        <a class="" href="index.html"><img src="upload/logo-HP.png" alt="" width="200" height="200" title="logo HP" /></a>
+                    </div>
+                </div>
+                <div class="kingster-mobile-menu-left">
+                    <div class="kingster-mobile-menu">
+                        <a class="kingster-mm-menu-button kingster-mobile-menu-button kingster-mobile-button-hamburger" href="#kingster-mobile-menu"><span></span></a>
+                        <div class="kingster-mm-menu-wrap kingster-navigation-font" id="kingster-mobile-menu" data-slide="right">
+                            <ul id="menu-main-navigation" class="m-menu">
+                                <li class="menu-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="about-us.html">About</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="program.html">Program</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="impact.html">Impact</a>
+                                </li>
+                                <li class="menu-item"><a href="involve.html">Get Involved</a></li>
+                                <li class="menu-item"><a href="stories.html">Stories</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kingster-body-outer-wrapper">
+        <div class="kingster-body-wrapper clearfix kingster-with-transparent-header kingster-with-frame">
+            <div class="kingster-header-background-transparent">
+                <div class="kingster-top-bar">
+                    <div class="kingster-top-bar-background"></div>
+                    <div class="kingster-top-bar-container kingster-container">
+                        <div class="kingster-top-bar-container-inner clearfix">
+                            <div class="kingster-top-bar-left kingster-item-pdlr">
+                                <a href="#" style="margin-right: 30px;">Campus</a><a href="#" style="margin-right: 30px;">Documentation</a><a href="#" style="margin-right: 30px;">Login</a>
+                            </div>
+                            <div class="kingster-top-bar-right kingster-item-pdlr">
+                                <div class="kingster-top-bar-right-text"><span style="color: #8dd7e5; margin-right: 30px;">Phone: +1 212 946 2707</span><a href="#" style="margin-right: 0px;">Help Center</a></div>
+                                <div class="kingster-top-bar-right-social">
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="facebook"><i class="fa fa-facebook"></i></a>
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="twitter"><i class="fa fa-twitter"></i></a>
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="instagram"><i class="fa fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <header class="kingster-header-wrap kingster-header-style-plain kingster-style-splitted-menu kingster-sticky-navigation kingster-style-slide clearfix" data-navigation-offset="75px">
+                    <div class="kingster-header-background"></div>
+                    <div class="kingster-header-container kingster-container">
+                        <div class="kingster-header-container-inner clearfix">
+                            <div class="kingster-navigation kingster-item-pdlr clearfix">
+                                <div class="kingster-main-menu" id="kingster-main-menu">
+                                    <ul id="menu-main-navigation-1" class="sf-menu">
+                                        <li class="menu-item menu-item-home current-menu-item page_item page-item-6208 current_page_item  kingster-normal-menu">
+                                            <a href="index.html">Home</a>
+                                        </li>
+                                        <li class="menu-item kingster-normal-menu">
+                                            <a href="about-us.html" class="sf-with-ul-pre">About</a>
+                                        </li>
+                                        <li class="menu-item kingster-mega-menu">
+                                            <a href="program.html" class="sf-with-ul-pre">Programs</a>
+                                        </li>
+                                        <li class="kingster-center-nav-menu-item">
+                                            <div class="kingster-logo kingster-item-pdlr">
+                                                <div class="kingster-logo-inner">
+                                                    <a class="" href="index.html"><img src="upload/logo-HP.png" alt="" width="200" height="200" title="logo HP" /></a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="menu-item kingster-normal-menu">
+                                            <a href="impact.html" class="sf-with-ul-pre">Impact</a>
+                                        </li>
+                                        <li class="menu-item kingster-normal-menu">
+                                            <a href="involve.html" class="sf-with-ul-pre">Get Involved</a></li>
+                                        <li class="menu-item kingster-normal-menu"><a href="stories.html">Stories</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- kingster-navigation -->
+                        </div>
+                        <!-- kingster-header-inner -->
+                    </div>
+                    <!-- kingster-header-container -->
+                </header>
+                <!-- header -->
+            </div>
+
+
+
+            
+            <div class="kingster-page-title-wrap kingster-style-custom kingster-left-align" style="background-image: url(upload/shutterstock_59887279.jpg) ;">
+                <div class="kingster-header-transparent-substitute"></div>
+                <div class="kingster-page-title-overlay"></div>
+                <div class="kingster-page-title-top-gradient"></div>
+                <div class="kingster-page-title-bottom-gradient"></div>
+                <div class="kingster-page-title-container kingster-container">
+                    <div class="kingster-page-title-content kingster-item-pdlr" style="padding-top: 400px ;padding-bottom: 60px ;">
+                        <div class="kingster-page-caption" style="font-size: 21px ;font-weight: 400 ;letter-spacing: 0px ;">
+                            Measurable outcomes
+                        </div>
+                        <h1 class="kingster-page-title" style="font-size: 48px ;font-weight: 700 ;text-transform: none ;letter-spacing: 0px ;color: #ffffff ;">Impact</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kingster-breadcrumbs">
+                <div class="kingster-breadcrumbs-container kingster-container">
+                    <div class="kingster-breadcrumbs-item kingster-item-pdlr">
+                        <!-- Breadcrumb NavXT 6.5.0 -->
+                        <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Kingster - College." href="#" class="home"><span property="name">Home</span></a>
+                        <meta property="position" content="1">
+                        </span> &gt; <span property="itemListElement" typeof="ListItem"><span property="name" class="post post-page current-item">Impact</span>
+                        <meta property="url" content="index.html">
+                        <meta property="position" content="2">
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kingster-page-wrapper" id="kingster-page-wrapper">
+                <div class="gdlr-core-page-builder-body">
+                    <div class="gdlr-core-pbf-sidebar-wrapper " style="margin: 0px 0px 30px 0px;">
+                        <div class="gdlr-core-pbf-sidebar-container gdlr-core-line-height-0 clearfix gdlr-core-js gdlr-core-container">
+                            <div class="gdlr-core-pbf-sidebar-content gdlr-core-column-40 gdlr-core-pbf-sidebar-padding gdlr-core-line-height gdlr-core-column-extend-left" style="padding: 35px 0px 20px 0px;">
+                                <div class="gdlr-core-pbf-sidebar-content-inner">
+                                    <div class="gdlr-core-pbf-element">
+                                        <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr">
+                                            <div class="gdlr-core-title-item-title-wrap clearfix">
+                                                <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 27px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;">Turning Intent into Impact</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="gdlr-core-pbf-element">
+                                        <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align">
+                                            <div class="gdlr-core-text-box-item-content" style="font-size: 16px ;text-transform: none ;">
+                                                <p>
+                                                    Our impact is not defined by intent alone, but by consistent, measurable action. From the early stages of building our foundation to expanding our reach across communities, every initiative is designed to create real, lasting opportunities for students. We focus on bridging gaps in access, enabling practical learning experiences, and equipping young individuals with the skills and confidence they need to move forward.
+                                                </p>
+                                                <p>
+                                                   What sets our approach apart is the balance between vision and execution. We are not only building systems and programs, but also creating an ecosystem where students, volunteers, and partners come together to drive meaningful change. Each milestone reflects a step toward a more inclusive and opportunity-driven learning environment.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <div class="gdlr-core-pbf-wrapper " style="padding: 90px 0px 60px 0px;">
+                        <div class="gdlr-core-pbf-background-wrap" style="background-color: #192f59 ;">
+                        </div>
+                        <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                                <div class="gdlr-core-pbf-element">
+                                    <div class="gdlr-core-tab-item gdlr-core-js gdlr-core-item-pdb gdlr-core-left-align gdlr-core-tab-style1-horizontal gdlr-core-item-pdlr">
+                                        <div class="gdlr-core-tab-item-wrap">
+                                            <div class="gdlr-core-tab-item-title-wrap clearfix gdlr-core-title-font">
+                                                <div class="gdlr-core-tab-item-title gdlr-core-active" data-tab-id="1">
+                                                    Achievements
+                                                </div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="2">
+                                                    Milestones
+                                                </div>
+                                                <div class="gdlr-core-tab-item-title " data-tab-id="3">
+                                                    Accountability
+                                                </div>
+                                            </div>
+                                            <div class="gdlr-core-tab-item-content-wrap clearfix">
+                                                <div class="gdlr-core-tab-item-content gdlr-core-active" data-tab-id="1" style="background-color: #ffffff ;background-image: url(upload/tab-bg.png) ;background-position: top right ;">
+                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top">
+                                                        <div class="gdlr-core-title-item-title-wrap ">
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 700 ;text-transform: none ;color: #314e85 ;">What we have achieved so far?<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3>
+                                                        </div>
+                                                    </div>
+															<ul class="gdlr-core-icon-list">
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Organization registered and operational</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">ERP system implemented</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">South Chennai hub established</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Core volunteer group formed</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Partnerships initiated</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Learning platform under development</span>
+																</div>
+																</li>
+															</ul>
+                                                </div>
+                                                <div class="gdlr-core-tab-item-content " data-tab-id="2" style="background-color: #ffffff ;background-image: url(upload/tab-bg.png) ;background-position: top right ;">
+                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top">
+                                                        <div class="gdlr-core-title-item-title-wrap ">
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 700 ;text-transform: none ;color: #314e85 ;">Impact Goals<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3>
+                                                        </div>
+                                                    </div>
+															<ul class="gdlr-core-icon-list">
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Expand mobile learning infrastructure</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Increase student reach</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Build a strong volunteer network</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Scale digital learning programs</span>
+																</div>
+																</li>
+															</ul>
+                                                </div>
+                                                <div class="gdlr-core-tab-item-content " data-tab-id="3" style="background-color: #ffffff ;background-image: url(upload/tab-bg.png) ;background-position: top right ;">
+                                                    <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix gdlr-core-left-align gdlr-core-title-item-caption-top">
+                                                        <div class="gdlr-core-title-item-title-wrap ">
+                                                            <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 22px ;font-weight: 700 ;text-transform: none ;color: #314e85 ;">Measurements &amp; KPIs<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider"></span></h3>
+                                                        </div>
+                                                    </div>
+															<ul class="gdlr-core-icon-list">
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Student participation and retention</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Academic improvement</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Program engagement</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Volunteer involvement</span>
+																</div>
+																</li>
+																<li class=" gdlr-core-skin-divider clearfix" style="margin-bottom: 18px ;"><span class="gdlr-core-icon-list-icon-wrap gdlr-core-left" ><i class="gdlr-core-icon-list-icon fa fa-circle" style="color: #192f59 ;font-size: 9px ;width: 9px ;"></i></span>
+																<div class="gdlr-core-icon-list-content-wrap">
+																	<span class="gdlr-core-icon-list-content" style="font-size: 18px ;">Career and internship outcomes</span>
+																</div>
+																</li>
+
+															</ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <footer class="kingster-no-title-divider">
+                <div class="kingster-footer-wrapper">
+                    <div class="kingster-footer-container kingster-container clearfix">
+                        <div class="kingster-footer-column kingster-item-pdlr kingster-column-15">
+                            <div id="text-2" class="widget widget_text kingster-widget">
+                                <div class="textwidget">
+                                    <p>
+                                        <img src="upload/Logo-MF.svg" alt="" width="160" /><br />
+                                        <span class="gdlr-core-space-shortcode" style="margin-top: 0px;"></span><br />
+                                        PO 35300<br />
+                                        Kilpauk Post Office, <br />
+										Chennai 600 010.
+                                    </p>
+                                    <p>
+                                        <span style="font-size: 15px; color: #ffffff;">+91 90929 55595</span><br />
+                                        <span class="gdlr-core-space-shortcode" style="margin-top: -20px;"></span><br />
+                                        <a style="font-size: 15px; color: #8dd7e5;" href="#">
+                                            <span class="__cf_email__">info@marekfoundation.org</span>
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kingster-footer-column kingster-item-pdlr kingster-column-15">
+                            <div id="gdlr-core-custom-menu-widget-2" class="widget widget_gdlr-core-custom-menu-widget kingster-widget">
+                                <h3 class="kingster-widget-title">Our Programs</h3>
+                                <span class="clear"></span>
+                                <div class="menu-our-campus-container">
+                                    <ul id="menu-our-campus" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">1-2-3 &gt; 1</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="kingster-footer-column kingster-item-pdlr kingster-column-15">
+                            <div id="gdlr-core-custom-menu-widget-4" class="widget widget_gdlr-core-custom-menu-widget kingster-widget">
+                                <h3 class="kingster-widget-title">Areas</h3>
+                                <span class="clear"></span>
+                                <div class="menu-academics-container">
+                                    <ul id="menu-academics" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Kilpauk</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Muttukadu</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Padi</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Kupam</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Avadi</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="#">Navalur</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kingster-copyright-wrapper">
+                    <div class="kingster-copyright-container kingster-container clearfix">
+                        <div class="kingster-copyright-left kingster-item-pdlr">Copyright All Right Reserved 2026, Marek Foundation</div>
+                        <div class="kingster-copyright-right kingster-item-pdlr">
+                            <div class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align" style="padding-bottom: 0px;">
+                                <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="linkedin"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="instagram"><i class="fa fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+
+    <script src="js/jquery/jquery.js" id="jquery-core-js"></script>
+    <script src="js/kingster-learnpress.js" id="kingster-learnpress-js"></script>
+    <script>
+        ( function ( body ) {
+            'use strict';
+            body.className = body.className.replace( /\btribe-no-js\b/, 'tribe-js' );
+        } )( document.body );
+    </script>
+    <script>
+        /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};/* ]]> */
+    </script>
+    <script src="js/script.js" id="gdlr-core-plugin-js"></script>
+    <script id="gdlr-core-page-builder-js-extra">
+        /* <![CDATA[ */
+        var gdlr_core_pbf = {"admin":"","video":{"width":"640","height":"360"},"ajax_url":"#"};
+        /* ]]> */
+    </script>
+    <script src="js/page-builder.js" id="gdlr-core-page-builder-js"></script>
+    <script src="js/jquery/ui/effect.min.js" id="jquery-effects-core-js"></script>
+    <script id="kingster-script-core-js-extra">
+        /* <![CDATA[ */
+        var kingster_script_core = {"home_url":"index.html"};
+        /* ]]> */
+    </script>
+    <script src="js/script-core.js" id="kingster-script-core-js"></script>
+    <script type='text/javascript' src='js/isotope.js'></script>
+</body>
+</html>
