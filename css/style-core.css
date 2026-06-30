@@ -6807,3 +6807,106 @@ body .tribe-bar-views-inner {
     'GRAD' 0,
     'opsz' 36;
 }
+.gdlr-core-pbf-column{
+display:block !important;
+}
+
+.gdlr-core-pbf-column-content{
+display:block !important;
+}
+
+input,
+textarea{
+    width:100%;
+    padding:15px 18px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    margin-bottom:25px;
+    font-size:15px;
+}
+
+input:focus,
+textarea:focus{
+    border-color:#1C4584;
+    outline:none;
+}
+
+label{
+    line-height:2;
+    font-size:15px;
+}
+
+button.kingster-button{
+    background:#1C4584;
+    color:#fff;
+    padding:15px 45px;
+    border-radius:30px;
+    font-size:16px;
+}
+
+button.kingster-button:hover{
+    background:#0f2f60;
+}#volunteer-form input,
+#volunteer-form textarea,
+#volunteer-form select{
+
+    width:100%;
+    margin-bottom:18px;
+    padding:16px 20px;
+    border:1px solid #dcdcdc;
+    border-radius:4px;
+    font-size:15px;
+    transition:.25s;
+}
+
+#volunteer-form input:focus,
+#volunteer-form textarea:focus,
+#volunteer-form select:focus{
+
+    border-color:#1C4584;
+    outline:none;
+}
+
+#volunteer-form textarea{
+    min-height:180px;
+    resize:vertical;
+}
+
+#volunteer-form .kingster-button{
+    min-width:260px;
+}
+.volunteer-options{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 22px;margin-bottom:35px;}
+.volunteer-options input{display:none;}
+.option-card{display:flex;align-items:center;padding:18px 22px;border:2px solid #e2e2e2;border-radius:8px;background:#fff;cursor:pointer;font-weight:600;transition:.25s;}
+.option-card:hover{border-color:#1C4584;transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.08);}
+.checkmark{width:28px;height:28px;border:2px solid #cfcfcf;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:15px;font-size:14px;color:transparent;transition:.25s;flex-shrink:0;}
+.volunteer-options input:checked+.option-card{background:#1C4584;border-color:#1C4584;color:#fff;box-shadow:0 10px 24px rgba(28,69,132,.25);}
+.volunteer-options input:checked+.option-card .checkmark{background:#fff;border-color:#fff;color:#1C4584;}
+.volunteer-submit{
+width:280px !important;
+max-width:100%;
+height:56px;
+margin:35px auto 0;
+display:block;
+font-size:17px;
+font-weight:600;
+letter-spacing:.3px;
+border-radius:30px;
+transition:.25s;
+}
+
+.volunteer-submit:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 24px rgba(28,69,132,.25);
+}
+.selection-message{
+margin:0 0 20px;
+font-size:15px;
+color:#7b7b7b;
+transition:.25s;
+}
+
+.selection-message.error{
+color:#d93025;
+font-weight:500;
+}
