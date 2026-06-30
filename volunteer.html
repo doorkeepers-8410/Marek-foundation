@@ -286,11 +286,11 @@ document.addEventListener("DOMContentLoaded", function () {
 					<div class="gdlr-core-title-item gdlr-core-center-align" style="padding-bottom:45px;">
 					<span class="gdlr-core-title-item-caption">Thank you for your interest in making a difference. Complete the form below and we'll get in touch soon.</span>
 					</div>
-						<form id="volunteerForm">
-						<input type="text" name="fullname" placeholder="Full Name *" required>
-						<input type="email" name="email" placeholder="Email Address *" required>
-						<input type="tel" name="phone" placeholder="Phone Number">
-						<input type="text" name="city" placeholder="City">
+						<form id="volunteerForm" novalidate>
+						<input id="fullname" type="text" name="fullname" placeholder="Full Name *" required>
+						<input id="email" type="email" name="email" placeholder="Email Address *" required>
+						<input id="phone" type="tel" name="phone" placeholder="Phone Number">
+						<input id="city" type="text" name="city" placeholder="City">
 						<h5 style="margin:40px 0 20px;">Areas you'd like to volunteer </h5>
 						<p id="selection-message" class="selection-message"> You may select up to two volunteer areas.</p>
 						<div class="volunteer-options">
@@ -308,10 +308,13 @@ document.addEventListener("DOMContentLoaded", function () {
 						<label for="marketing" class="option-card"><span class="checkmark">✓</span><span>Marketing &amp; Social Media</span></label>
 						</div>						
 						<h5 style="margin:40px 0 20px;">Tell us a little about yourself and why you'd like to volunteer.</h5>
-						<textarea name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
+						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
 						<div class="gdlr-core-center-align" style="margin-top:40px;">
 						<div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY"></div>
-						<input type="submit" class="kingster-button kingster-button-round volunteer-submit" value="Submit Application">
+						<button type="submit" class="kingster-button kingster-button-round volunteer-submit">
+						Submit Application
+						</button>
+						<p id="formStatus" style="margin-top:20px;font-weight:600;"></p>
 						<p style="margin-top:20px;font-size:14px;color:#888;">We respect your privacy. Your information will never be shared.</p>
 						</div>
 						</form>					
@@ -472,6 +475,93 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 	});
 	</script>
+	
+	<script>
+	document.getElementById("volunteerForm").addEventListener("submit",async function(e){
+
+	e.preventDefault();
+
+	const form=this;
+	const status=document.getElementById("formStatus");
+	const submitBtn=form.querySelector('input[type="submit"]');
+
+	const areas=[];
+
+	document.querySelectorAll('.volunteer-options input:checked').forEach(box=>{
+	areas.push(box.value);
+	});
+
+	const payload={
+	name:document.getElementById("fullname").value.trim(),
+	email:document.getElementById("email").value.trim(),
+	phone:document.getElementById("phone").value.trim(),
+	city:document.getElementById("city").value.trim(),
+	areas:areas,
+	message:document.getElementById("message").value.trim()
+	};
+
+	submitBtn.disabled=true;
+	submitBtn.textContent="Submitting...";
+	submitBtn.style.opacity="0.7";
+	submitBtn.style.cursor="not-allowed";
+
+	status.style.color="#555";
+	status.innerHTML="Submitting your application...";
+
+	try{
+
+	const response=await fetch("/api/volunteer",{
+	method:"POST",
+	headers:{
+	"Content-Type":"application/json"
+	},
+	body:JSON.stringify(payload)
+	});
+
+	const result=await response.json();
+
+	if(result.success){
+
+	status.style.color="#2DBE7F";
+	status.innerHTML="✓ Thank you for volunteering! We'll be in touch soon.";
+
+	form.reset();
+
+	document.querySelectorAll(".option-card").forEach(card=>{
+	card.classList.remove("selected");
+	});
+
+	}
+	else{
+
+	throw new Error("Submission failed");
+
+	}
+
+	}catch(err){
+
+	console.error(err);
+
+	status.style.color="#d93025";
+	status.innerHTML="Unable to submit your application. Please try again.";
+
+	submitBtn.disabled=false;
+	submitBtn.textContent="Submit Application";
+	submitBtn.style.opacity="1";
+	submitBtn.style.cursor="pointer";
+
+	return;
+
+	}
+
+	submitBtn.disabled=false;
+	submitBtn.value="Submit Application";
+	submitBtn.style.opacity="1";
+	submitBtn.style.cursor="pointer";
+
+	});
+	</script>
+	
     <script>
         /* <![CDATA[ */var tribe_l10n_datatables = {"aria":{"sort_ascending":": activate to sort column ascending","sort_descending":": activate to sort column descending"},"length_menu":"Show _MENU_ entries","empty_table":"No data available in table","info":"Showing _START_ to _END_ of _TOTAL_ entries","info_empty":"Showing 0 to 0 of 0 entries","info_filtered":"(filtered from _MAX_ total entries)","zero_records":"No matching records found","search":"Search:","all_selected_text":"All items on this page were selected. ","select_all_link":"Select all pages","clear_selection":"Clear Selection.","pagination":{"all":"All","next":"Next","previous":"Previous"},"select":{"rows":{"0":"","_":": Selected %d rows","1":": Selected 1 row"}},"datepicker":{"dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesMin":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Prev","currentText":"Today","closeText":"Done","today":"Today","clear":"Clear"}};/* ]]> */
     </script>
