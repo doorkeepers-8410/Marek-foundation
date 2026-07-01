@@ -6910,3 +6910,20 @@ transition:.25s;
 color:#d93025;
 font-weight:500;
 }
+.mf-button {
+    background:#0082fa;
+    color:#fff;
+    padding:14px 32px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    transition:all .3s ease;
+}
+
+.mf-button:hover{
+    background:#006fd8;
+}
