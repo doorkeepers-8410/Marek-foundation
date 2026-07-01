@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						<h5 style="margin:40px 0 20px;">Tell us a little about yourself and why you'd like to volunteer.</h5>
 						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
 						<div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-center-align" style="margin-top:40px;">
-						<div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" style="margin-bottom:25px;"></div>
+						<div class="cf-turnstile" data-sitekey="0x4AAAAAADt8LvoXMCPxWZsf" style="margin-bottom:25px;"></div>
 						<button id="submitBtn" type="submit" class="mf-button">Submit Application</button>
 						<p id="formStatus" style="margin-top:20px;font-weight:600;"></p>
 						<p style="margin-top:20px;font-size:14px;color:#888;">We respect your privacy. Your information will never be shared.</p>
@@ -452,13 +452,17 @@ document.addEventListener("DOMContentLoaded", function () {
 	areas.push(box.value);
 	});
 
+	const turnstileToken =
+    document.querySelector('[name="cf-turnstile-response"]').value;
+		
 	const payload={
 	name:document.getElementById("fullname").value.trim(),
 	email:document.getElementById("email").value.trim(),
 	phone:document.getElementById("phone").value.trim(),
 	city:document.getElementById("city").value.trim(),
 	areas:areas,
-	message:document.getElementById("message").value.trim()
+	message:document.getElementById("message").value.trim(),
+	turnstileToken: turnstileToken
 	};
 
 	submitBtn.disabled = true;
