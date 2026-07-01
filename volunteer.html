@@ -309,10 +309,13 @@ document.addEventListener("DOMContentLoaded", function () {
 						</div>						
 						<h5 style="margin:40px 0 20px;">Tell us a little about yourself and why you'd like to volunteer.</h5>
 						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
-						<div class="gdlr-core-center-align" style="margin-top:40px;">
-						<div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY"></div>
-						<button type="submit" class="kingster-button kingster-button-round volunteer-submit">
-						Submit Application
+						<div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-center-align" style="margin-top:40px;">
+						<div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" style="margin-bottom:25px;"></div>
+						<button
+							id="submitBtn"
+							type="submit"
+							class="gdlr-core-button gdlr-core-button-gradient">
+							<span class="gdlr-core-content">Submit Application</span>
 						</button>
 						<p id="formStatus" style="margin-top:20px;font-weight:600;"></p>
 						<p style="margin-top:20px;font-size:14px;color:#888;">We respect your privacy. Your information will never be shared.</p>
@@ -343,9 +346,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
             </div>
-
-
-
 
             <footer class="kingster-no-title-divider">
                 <div class="kingster-footer-wrapper">
@@ -535,19 +535,21 @@ document.addEventListener("DOMContentLoaded", function () {
 	status.style.color="#d93025";
 	status.innerHTML="Unable to submit your application. Please try again.";
 
-	submitBtn.disabled = true;
+	submitBtn.disabled = false;
+	submitBtn.querySelector(".gdlr-core-content").textContent = "Submitting Application...";
 	submitBtn.style.background = "#0069d9";
 	submitBtn.style.cursor = "not-allowed";
 	submitBtn.style.opacity = "0.9";
-
+		
 	return;
 
 	}
 
-	submitBtn.disabled=false;
-	submitBtn.textContent="Submit Application";
-	submitBtn.style.opacity="1";
-	submitBtn.style.cursor="pointer";
+	submitBtn.disabled = false;
+	submitBtn.querySelector(".gdlr-core-content").textContent = "Submit Application";
+	submitBtn.style.background = "#0082fa";
+	submitBtn.style.opacity = "1";
+	submitBtn.style.cursor = "pointer";
 
 	});
 	</script>
