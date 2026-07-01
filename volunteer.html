@@ -437,6 +437,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 	</script>
 	
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+	
 	<script>
 	document.getElementById("volunteerForm").addEventListener("submit",async function(e){
 
@@ -452,8 +454,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	areas.push(box.value);
 	});
 
+	const turnstileInput =
+	document.querySelector('[name="cf-turnstile-response"]');
+
 	const turnstileToken =
-    document.querySelector('[name="cf-turnstile-response"]').value;
+	turnstileInput ? turnstileInput.value : "";
 		
 	const payload={
 	name:document.getElementById("fullname").value.trim(),
@@ -464,6 +469,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	message:document.getElementById("message").value.trim(),
 	turnstileToken: turnstileToken
 	};
+		
+	if (!turnstileToken) {
+    status.style.color = "#d93025";
+    status.innerHTML = "Please complete the security verification.";
+
+    submitBtn.disabled = false;
+    return;
+}
 
 	submitBtn.disabled = true;
 	submitBtn.style.background = "#0069d9";
