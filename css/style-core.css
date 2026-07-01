@@ -6927,3 +6927,36 @@ font-weight:500;
 .mf-button:hover{
     background:#006fd8;
 }
+/* Mobile layout */
+@media (max-width:768px){
+
+    .volunteer-options{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .option-card{
+        min-height:70px;
+        padding:18px 20px;
+    }
+
+    .option-card label{
+        font-size:18px;
+    }
+
+}
+@media (max-width:768px){
+
+    .option-card span{
+        font-size:17px;
+    }
+
+}
+@media (max-width:768px){
+
+    h2{
+        font-size:34px;
+        line-height:1.2;
+    }
+
+}
