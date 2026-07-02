@@ -26,7 +26,16 @@ export async function onRequest(context) {
     }
   );
 
-  const verification = await verifyResponse.json();
+ const verification = await verifyResponse.json();
+
+return new Response(
+  JSON.stringify(verification, null, 2),
+  {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+);
 
   if (!verification.success) {
 
