@@ -112,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             </div>
                             <div class="kingster-top-bar-right kingster-item-pdlr">
                                 <div class="kingster-top-bar-right-social">
-                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="facebook"><i class="fa fa-facebook"></i></a>
-                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="twitter"><i class="fa fa-twitter"></i></a>
-                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="instagram"><i class="fa fa-instagram"></i></a>
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="facebook"><i class="fa-solid fa-facebook"></i></a>
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="twitter"><i class="fa-solid fa-twitter"></i></a>
+                                    <a href="#" target="_blank" class="kingster-top-bar-social-icon" title="instagram"><i class="fa-solid fa-instagram"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                             <div class="gdlr-core-pbf-element">
                                                 <div class="gdlr-core-text-box-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-left-align" style="padding-bottom: 0px;">
                                                     <div class="gdlr-core-text-box-item-content" style="font-size: 16px;">
-                                                        <P>Create long-term impact through meaningful partnerships.</P>
+                                                        <p>Create long-term impact through meaningful partnerships.</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,40 +268,62 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
 					<div class="gdlr-core-pbf-wrapper" style="padding:90px 0;" id="volunteer-form">
-					<div class="gdlr-core-pbf-background-wrap" style="background:#f7f7f7;"></div>
-					<div class="gdlr-core-pbf-wrapper-content">
-					<div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
-					<div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first">
-					<div class="gdlr-core-pbf-column-content clearfix" style="max-width:760px;margin:0 auto;">
-					<div class="gdlr-core-title-item gdlr-core-center-align" style="padding-bottom:45px;">
-					<span class="gdlr-core-title-item-caption">Thank you for your interest in making a difference. Complete the form below and we'll get in touch soon.</span>
+						<div class="gdlr-core-pbf-background-wrap" style="background:#f7f7f7;"></div>
+							<div class="gdlr-core-pbf-wrapper-content">
+								<div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+									<div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first">
+								<div class="gdlr-core-pbf-column-content clearfix" style="max-width:760px;margin:0 auto;">
+							<div class="gdlr-core-title-item gdlr-core-center-align" style="padding-bottom:45px;">
+						<span class="gdlr-core-title-item-caption">Thank you for your interest in making a difference. Complete the form below and we'll get in touch soon.</span>
 					</div>
-						<form id="volunteerForm" novalidate>
-						<input id="fullname" type="text" name="fullname" placeholder="Full Name *" required>
+						<form id="partnerForm" novalidate>
+						<input id="organization" type="text" name="organization" placeholder="Organization Name *" required>
+						<input id="contact" type="text" name="contact" placeholder="Contact Person *" required>
 						<input id="email" type="email" name="email" placeholder="Email Address *" required>
 						<input id="phone" type="tel" name="phone" placeholder="Phone Number">
+						<input id="website" type="url" name="website" placeholder="Website (optional)">
 						<input id="city" type="text" name="city" placeholder="City">
-						<h5 style="margin:40px 0 20px;">Areas you'd like to volunteer </h5>
-						<p id="selection-message" class="selection-message"> You may select up to two volunteer areas.</p>
+						<h5 style="margin:40px 0 20px;">Type of organization</h5>
+						<p id="organizationMessage" class="selection-message">Select the option that best describes your organization.</p>
 						<div class="volunteer-options">
-						<input type="checkbox" id="teach" name="interest[]" value="Teaching">
-						<label for="teach" class="option-card"><span class="checkmark">✓</span><span>Teaching</span></label>
-						<input type="checkbox" id="mentor" name="interest[]" value="Mentoring">
-						<label for="mentor" class="option-card"><span class="checkmark">✓</span><span>Mentoring</span></label>
-						<input type="checkbox" id="events" name="interest[]" value="Events">
-						<label for="events" class="option-card"><span class="checkmark">✓</span><span>Events</span></label>
-						<input type="checkbox" id="fund" name="interest[]" value="Fundraising">
-						<label for="fund" class="option-card"><span class="checkmark">✓</span><span>Fundraising</span></label>
-						<input type="checkbox" id="admin" name="interest[]" value="Administration">
-						<label for="admin" class="option-card"><span class="checkmark">✓</span><span>Administration</span></label>
-						<input type="checkbox" id="marketing" name="interest[]" value="Marketing & Social Media">
-						<label for="marketing" class="option-card"><span class="checkmark">✓</span><span>Marketing &amp; Social Media</span></label>
+						<input type="radio" id="corp" name="organizationtype" value="Corporate CSR">
+						<label for="corp" class="option-card"><span class="checkmark">✓</span><span>Corporate CSR</span></label>
+						<input type="radio" id="ngo" name="organizationtype" value="NGO">
+						<label for="ngo" class="option-card"><span class="checkmark">✓</span><span>NGO/Non-profit</span></label>
+						<input type="radio" id="institution" name="organizationtype" value="Educational Institution">
+						<label for="institution" class="option-card"><span class="checkmark">✓</span><span>Educational Institution</span></label>
+						<input type="radio" id="foundation" name="organizationtype" value="Foundation / Trust">
+						<label for="foundation" class="option-card"><span class="checkmark">✓</span><span>Foundation / Trust</span></label>
+						<input type="radio" id="group" name="organizationtype" value="Volunteer Group">
+						<label for="group" class="option-card"><span class="checkmark">✓</span><span>Volunteer Group</span></label>
+						<input type="radio" id="donor" name="organizationtype" value="Individual Donor">
+						<label for="donor" class="option-card"><span class="checkmark">✓</span><span>Individual Donor</span></label>
+						<input type="radio" id="other" name="organizationtype" value="Other">
+						<label for="other" class="option-card"><span class="checkmark">✓</span><span>Other</span></label>
+						</div>	
+						<h5 style="margin:40px 0 20px;">How would you like to partner with us?</h5>
+						<p id="partnerSelectionMessage" class="select-area"> Select all that apply</p>
+						<div class="volunteer-options">
+						<input type="checkbox" id="finance" name="interest[]" value="Financial Support">
+						<label for="finance" class="option-card"><span class="checkmark">✓</span><span>Financial Support</span></label>
+						<input type="checkbox" id="sponsor" name="interest[]" value="Program Sponsorship">
+						<label for="sponsor" class="option-card"><span class="checkmark">✓</span><span>Program Sponsorship</span></label>
+						<input type="checkbox" id="empvolunteer" name="interest[]" value="Employee Volunteering">
+						<label for="empvolunteer" class="option-card"><span class="checkmark">✓</span><span>Employee Volunteering</span></label>
+						<input type="checkbox" id="skillvolunteer" name="interest[]" value="Skill-based Volunteering">
+						<label for="skillvolunteer" class="option-card"><span class="checkmark">✓</span><span>Skill-based Volunteering</span></label>
+						<input type="checkbox" id="event" name="interest[]" value="Event Partnership">
+						<label for="event" class="option-card"><span class="checkmark">✓</span><span>Event Partnership</span></label>
+						<input type="checkbox" id="program" name="interest[]" value="Educational Program">
+						<label for="program" class="option-card"><span class="checkmark">✓</span><span>Educational Programs</span></label>
+						<input type="checkbox" id="partnership" name="interest[]" value="Long-term Partnership">
+						<label for="partnership" class="option-card"><span class="checkmark">✓</span><span>Long-term Partnership</span></label>
 						</div>						
-						<h5 style="margin:40px 0 20px;">Tell us a little about yourself and why you'd like to volunteer.</h5>
-						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
+						<h5 style="margin:40px 0 20px;">Tell us about your organization</h5>
+						<textarea id="message" name="message" rows="7" placeholder="Tell us about your organization, your mission and how you'd like to partner with the Marek Foundation."></textarea>
 						<div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-center-align" style="margin-top:40px;">
 						<div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY" style="margin-bottom:25px;"></div>
-						<button id="submitBtn" type="submit" class="mf-button">Submit Application</button>
+						<button id="submitBtn" type="submit" class="mf-button">Submit Partnership Request</button>
 						<p id="formStatus" style="margin-top:20px;font-weight:600;"></p>
 						<p style="margin-top:20px;font-size:14px;color:#888;">We respect your privacy. Your information will never be shared.</p>
 						</div>
