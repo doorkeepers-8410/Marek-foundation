@@ -8,10 +8,6 @@ export async function onRequest(context) {
 
   const body = await context.request.json();
 
-  /************************************************
-   * VERIFY CLOUDFLARE TURNSTILE
-   ************************************************/
-
   const verifyResponse = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
     {
@@ -26,10 +22,9 @@ export async function onRequest(context) {
     }
   );
 
- const verification = await verifyResponse.json();
+  const verification = await verifyResponse.json();
 
   if (!verification.success) {
-
     return new Response(
       JSON.stringify({
         success: false,
@@ -43,18 +38,9 @@ export async function onRequest(context) {
         }
       }
     );
-
   }
 
-  /************************************************
-   * REMOVE TOKEN BEFORE SENDING TO APPS SCRIPT
-   ************************************************/
-
   delete body.turnstileToken;
-
-  /************************************************
-   * SEND TO GOOGLE APPS SCRIPT
-   ************************************************/
 
   const response = await fetch(
     context.env.GOOGLE_SCRIPT_URL,
@@ -66,4 +52,14 @@ export async function onRequest(context) {
       body: JSON.stringify(body)
     }
   );
-;}
+
+  const result = await response.text();
+
+  return new Response(result, {
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
+    }
+  });
+
+}
