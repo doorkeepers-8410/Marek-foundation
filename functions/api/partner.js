@@ -66,17 +66,4 @@ export async function onRequest(context) {
       body: JSON.stringify(body)
     }
   );
-
-const result = await response.text();
-
-return new Response(
-  JSON.stringify({
-    workerReachedAppsScript: true,
-    appsScriptResponse: result
-  }, null, 2),
-  {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }
-);}
+;}
