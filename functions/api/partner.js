@@ -67,13 +67,16 @@ export async function onRequest(context) {
     }
   );
 
-  const result = await response.text();
+const result = await response.text();
 
-  return new Response(result, {
+return new Response(
+  JSON.stringify({
+    workerReachedAppsScript: true,
+    appsScriptResponse: result
+  }, null, 2),
+  {
     headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*"
+      "Content-Type": "application/json"
     }
-  });
-
-}
+  }
+);}
