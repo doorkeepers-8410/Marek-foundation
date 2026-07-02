@@ -285,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						<input id="city" type="text" name="city" placeholder="City">
 						<h5 style="margin:40px 0 20px;">Type of organization</h5>
 						<p id="organizationMessage" class="selection-message">Select the option that best describes your organization.</p>
-						<div class="volunteer-options">
+						<div class="partner-options">
 						<input type="radio" id="corp" name="organizationtype" value="Corporate CSR">
 						<label for="corp" class="option-card"><span class="checkmark">✓</span><span>Corporate CSR</span></label>
 						<input type="radio" id="ngo" name="organizationtype" value="NGO">
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
 						</div>	
 						<h5 style="margin:40px 0 20px;">How would you like to partner with us?</h5>
 						<p id="partnerSelectionMessage" class="select-area"> Select all that apply</p>
-						<div class="volunteer-options">
+						<div class="partner-options">
 						<input type="checkbox" id="finance" name="interest[]" value="Financial Support">
 						<label for="finance" class="option-card"><span class="checkmark">✓</span><span>Financial Support</span></label>
 						<input type="checkbox" id="sponsor" name="interest[]" value="Program Sponsorship">
@@ -423,33 +423,11 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </div>
 
-	<script>
-	const boxes=document.querySelectorAll('.volunteer-options input');
-	const message=document.getElementById('selection-message');
 
-	boxes.forEach(box=>{
-	box.addEventListener('change',()=>{
-
-	const checked=document.querySelectorAll('.volunteer-options input:checked');
-
-	if(checked.length>2){
-	box.checked=false;
-	message.textContent="You can select a maximum of two volunteer areas.";
-	message.classList.add("error");
-
-	setTimeout(()=>{
-	message.textContent="You may select up to two volunteer areas.";
-	message.classList.remove("error");
-	},3000);
-
-	}
-
-	});
-	});
-	</script>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 	
 	<script>
-	document.getElementById("volunteerForm").addEventListener("submit",async function(e){
+	document.getElementById("partnerForm").addEventListener("submit",async function(e){
 
 	e.preventDefault();
 
@@ -457,32 +435,58 @@ document.addEventListener("DOMContentLoaded", function () {
 	const status=document.getElementById("formStatus");
 	const submitBtn=form.querySelector('button[type="submit"]');
 
-	const areas=[];
-
-	document.querySelectorAll('.volunteer-options input:checked').forEach(box=>{
-	areas.push(box.value);
+	const interests = [];
+	document.querySelectorAll('.partner-options input:checked').forEach(box => {
+	interests.push(box.value);
 	});
+		
+	const turnstileInput =
+	document.querySelector('[name="cf-turnstile-response"]');
 
-	const payload={
-	name:document.getElementById("fullname").value.trim(),
-	email:document.getElementById("email").value.trim(),
-	phone:document.getElementById("phone").value.trim(),
-	city:document.getElementById("city").value.trim(),
-	areas:areas,
-	message:document.getElementById("message").value.trim()
+	const turnstileToken =
+	turnstileInput ? turnstileInput.value : "";
+		
+	if (!turnstileToken) {
+    status.style.color = "#d93025";
+    status.innerHTML = "Please complete the security verification.";
+    return;
+	}
+		
+	const organizationType =
+	document.querySelector('input[name="organizationtype[]"]:checked');
+	if (!organizationType) {
+    status.style.color = "#d93025";
+    status.innerHTML = "Please select your organization type.";
+
+    return;
+
+	}
+
+	const payload = {
+    organization: document.getElementById("organization").value.trim(),
+    contact: document.getElementById("contact").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    website: document.getElementById("website").value.trim(),
+    city: document.getElementById("city").value.trim(),
+    organizationType: organizationType.value,
+	interests: interests,
+	message: document.getElementById("message").value.trim(),
+	turnstileToken: turnstileToken
 	};
 
 	submitBtn.disabled = true;
+	submitBtn.querySelector(".gdlr-core-content").textContent = "Submitting Partnership Request...";
 	submitBtn.style.background = "#0069d9";
 	submitBtn.style.cursor = "not-allowed";
 	submitBtn.style.opacity = "0.9";
 
 	status.style.color="#555";
-	status.innerHTML="Submitting your application...";
+	status.innerHTML="Submitting your partnership request...";
 
 	try{
 
-	const response=await fetch("/api/volunteer",{
+	const response=await fetch("/api/partner",{
 	method:"POST",
 	headers:{
 	"Content-Type":"application/json"
@@ -500,10 +504,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	if(result.success){
 
 	status.style.color="#2DBE7F";
-	status.innerHTML="✓ Thank you for volunteering! We'll be in touch soon.";
+	status.innerHTML="✓ Thank you for partnering! We'll be in touch soon.";
 
 	form.reset();
-
+		
+	if (window.turnstile) {
+    turnstile.reset();
+	}
+		
 	document.querySelectorAll(".option-card").forEach(card=>{
 	card.classList.remove("selected");
 	});
@@ -520,20 +528,20 @@ document.addEventListener("DOMContentLoaded", function () {
 	console.error(err);
 
 	status.style.color="#d93025";
-	status.innerHTML="Unable to submit your application. Please try again.";
+	status.innerHTML="Unable to submit your partnership request. Please try again.";
 
 	submitBtn.disabled = false;
-	submitBtn.querySelector(".gdlr-core-content").textContent = "Submitting Application...";
-	submitBtn.style.background = "#0069d9";
-	submitBtn.style.cursor = "not-allowed";
-	submitBtn.style.opacity = "0.9";
+	submitBtn.querySelector(".gdlr-core-content").textContent ="Submit Partnership Request";
+	submitBtn.style.background = "#0082fa";
+	submitBtn.style.cursor = "pointer";
+	submitBtn.style.opacity = "1";		
 		
 	return;
 
 	}
 
 	submitBtn.disabled = false;
-	submitBtn.querySelector(".gdlr-core-content").textContent = "Submit Application";
+	submitBtn.querySelector(".gdlr-core-content").textContent = "Submit Partnership Request";
 	submitBtn.style.background = "#0082fa";
 	submitBtn.style.opacity = "1";
 	submitBtn.style.cursor = "pointer";
