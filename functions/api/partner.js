@@ -57,7 +57,7 @@ export async function onRequest(context) {
    ************************************************/
 
   const response = await fetch(
-    context.env.PARTNER_SCRIPT_URL,
+    context.env.GOOGLE_SCRIPT_URL,
     {
       method: "POST",
       headers: {
