@@ -457,158 +457,184 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 
 		<script>
-	const roleBoxes = document.querySelectorAll(
-		'.volunteer-options input[name="interest[]"]'
-	);
+		const roleBoxes = document.querySelectorAll(
+			'.volunteer-options input[name="interest[]"]'
+		);
 
-	const teachingSubjects = document.getElementById('teachingSubjects');
-	const subjectBoxes = document.querySelectorAll(
-		'#teachingSubjects input[name="subjects[]"]'
-	);
+		const teachingSubjects = document.getElementById('teachingSubjects');
+		const subjectBoxes = document.querySelectorAll(
+			'#teachingSubjects input[name="subjects[]"]'
+		);
 
-	roleBoxes.forEach(box => {
+		roleBoxes.forEach(box => {
 
-		box.addEventListener('change', () => {
+			box.addEventListener('change', () => {
 
-			// Allow only one volunteer role
-			if (box.checked) {
-				roleBoxes.forEach(otherBox => {
-					if (otherBox !== box) {
-						otherBox.checked = false;
-					}
-				});
-			}
+				// Allow only one volunteer role
+				if (box.checked) {
+					roleBoxes.forEach(otherBox => {
+						if (otherBox !== box) {
+							otherBox.checked = false;
+						}
+					});
+				}
 
-			// Show subjects only when Teach is selected
-			const teachSelected = document.querySelector(
-				'.volunteer-options input[name="interest[]"][value="Teach"]'
-			).checked;
+				// Show subjects only when Teach is selected
+				const teachSelected = document.querySelector(
+					'.volunteer-options input[name="interest[]"][value="Teach"]'
+				).checked;
 
-			if (teachSelected) {
-				teachingSubjects.style.display = 'block';
-			} else {
-				teachingSubjects.style.display = 'none';
+				if (teachSelected) {
+					teachingSubjects.style.display = 'block';
+				} else {
+					teachingSubjects.style.display = 'none';
 
-				// Clear any previously selected subjects
-				subjectBoxes.forEach(subject => {
-					subject.checked = false;
-				});
-			}
+					// Clear any previously selected subjects
+					subjectBoxes.forEach(subject => {
+						subject.checked = false;
+					});
+				}
+
+			});
 
 		});
-
-	});
-</script>
+	</script>
 	
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 	
 	<script>
-	document.getElementById("volunteerForm").addEventListener("submit",async function(e){
+		document.getElementById("volunteerForm").addEventListener("submit", async function(e) {
 
-	e.preventDefault();
+		e.preventDefault();
 
-	const form=this;
-	const status=document.getElementById("formStatus");
-	const submitBtn=form.querySelector('button[type="submit"]');
+		const form = this;
+		const status = document.getElementById("formStatus");
+		const submitBtn = form.querySelector('button[type="submit"]');
+		const teachingSubjects = document.getElementById("teachingSubjects");
 
-	const areas=[];
-	const subjects=[];
+		const areas = [];
+		const subjects = [];
 
-	document.querySelectorAll('.volunteer-options input:checked').forEach(box=>{
-	areas.push(box.value);
-	});
-
-	const turnstileInput =
-	document.querySelector('[name="cf-turnstile-response"]');
-
-	const turnstileToken =
-	turnstileInput ? turnstileInput.value : "";
-		
-	const payload={
-	formType: "volunteer",
-	name:document.getElementById("fullname").value.trim(),
-	email:document.getElementById("email").value.trim(),
-	phone:document.getElementById("phone").value.trim(),
-	city:document.getElementById("city").value.trim(),
-	areas:areas,
-	subjects:subjects,
-	message:document.getElementById("message").value.trim(),
-	turnstileToken: turnstileToken
-	};
-		
-	if (!turnstileToken) {
-    status.style.color = "#d93025";
-    status.innerHTML = "Please complete the security verification.";
-
-    submitBtn.disabled = false;
-    return;
-}
-
-	submitBtn.disabled = true;
-	submitBtn.style.background = "#0069d9";
-	submitBtn.style.cursor = "not-allowed";
-	submitBtn.style.opacity = "0.9";
-
-	status.style.color="#555";
-	status.innerHTML="Submitting your application...";
-
-	try{
-
-	const text = await response.text();
-
-	console.log("Response from Cloudflare:");
-	console.log(text);
-
-	let result = null;
-
-	try {
-		result = JSON.parse(text);
-	} catch (parseError) {
-		console.warn("Response was not JSON.");
-	}
-
-	// If the request itself was successful, treat the submission as successful
-	if (response.ok && (!result || result.success !== false)) {
-
-		status.style.color = "#2DBE7F";
-		status.innerHTML = "✓ Thank you for volunteering! We'll be in touch soon.";
-
-		form.reset();
-
-		document.querySelectorAll(".option-card").forEach(card => {
-			card.classList.remove("selected");
+		// Collect volunteer role only
+		document.querySelectorAll(
+			'.volunteer-options input[name="interest[]"]:checked'
+		).forEach(box => {
+			areas.push(box.value);
 		});
 
-	} else {
+		// Collect teaching subjects only
+		document.querySelectorAll(
+			'#teachingSubjects input[name="subjects[]"]:checked'
+		).forEach(box => {
+			subjects.push(box.value);
+		});
 
-		throw new Error(
-			result?.error || result?.message || "Submission failed"
-		);
+		const turnstileInput =
+			document.querySelector('[name="cf-turnstile-response"]');
 
-	}
+		const turnstileToken =
+			turnstileInput ? turnstileInput.value : "";
 
-	}catch(err){
+		const payload = {
+			formType: "volunteer",
+			name: document.getElementById("fullname").value.trim(),
+			email: document.getElementById("email").value.trim(),
+			phone: document.getElementById("phone").value.trim(),
+			city: document.getElementById("city").value.trim(),
+			areas: areas,
+			subjects: subjects,
+			message: document.getElementById("message").value.trim(),
+			turnstileToken: turnstileToken
+		};
 
-	console.error(err);
+		if (!turnstileToken) {
 
-	status.style.color="#d93025";
-	status.innerHTML="Unable to submit your application. Please try again.";
+			status.style.color = "#d93025";
+			status.innerHTML = "Please complete the security verification.";
 
-	submitBtn.disabled = false;
-	submitBtn.querySelector(".gdlr-core-content").textContent = "Submitting Application...";
-	submitBtn.style.background = "#0069d9";
-	submitBtn.style.cursor = "not-allowed";
-	submitBtn.style.opacity = "0.9";
-		
-	return;
+			submitBtn.disabled = false;
 
-	}
+			return;
+		}
 
-	submitBtn.disabled = false;
-	submitBtn.querySelector(".gdlr-core-content").textContent = "Submit Application";
-	submitBtn.style.background = "#0082fa";
-	submitBtn.style.opacity = "1";
-	submitBtn.style.cursor = "pointer";
+		submitBtn.disabled = true;
+		submitBtn.style.background = "#0069d9";
+		submitBtn.style.cursor = "not-allowed";
+		submitBtn.style.opacity = "0.9";
+
+		status.style.color = "#555";
+		status.innerHTML = "Submitting your application...";
+
+		try {
+
+			const response = await fetch("/api/volunteer", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(payload)
+			});
+
+			const text = await response.text();
+
+			console.log("Response from Cloudflare:");
+			console.log(text);
+
+			let result = null;
+
+			try {
+				result = JSON.parse(text);
+			} catch (parseError) {
+				console.warn("Response was not JSON.");
+			}
+
+			if (response.ok && (!result || result.success !== false)) {
+
+				status.style.color = "#2DBE7F";
+				status.innerHTML =
+					"✓ Thank you for volunteering! We'll be in touch soon.";
+
+				form.reset();
+
+				document.querySelectorAll(".option-card").forEach(card => {
+					card.classList.remove("selected");
+				});
+
+				teachingSubjects.style.display = "none";
+
+			} else {
+
+				throw new Error(
+					result?.error ||
+					result?.message ||
+					"Submission failed"
+				);
+			}
+
+		} catch (err) {
+
+			console.error(err);
+
+			status.style.color = "#d93025";
+			status.innerHTML =
+				"Unable to submit your application. Please try again.";
+
+			submitBtn.disabled = false;
+			submitBtn.querySelector(".gdlr-core-content").textContent =
+				"Submitting Application...";
+			submitBtn.style.background = "#0069d9";
+			submitBtn.style.cursor = "not-allowed";
+			submitBtn.style.opacity = "0.9";
+
+			return;
+		}
+
+		submitBtn.disabled = false;
+		submitBtn.querySelector(".gdlr-core-content").textContent =
+			"Submit Application";
+		submitBtn.style.background = "#0082fa";
+		submitBtn.style.opacity = "1";
+		submitBtn.style.cursor = "pointer";
 
 	});
 	</script>
