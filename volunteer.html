@@ -456,7 +456,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </div>
 
-	<script>
+		<script>
 	const roleBoxes = document.querySelectorAll(
 		'.volunteer-options input[name="interest[]"]'
 	);
@@ -480,12 +480,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 
 			// Show subjects only when Teach is selected
-			if (box.value === 'Teach' && box.checked) {
+			const teachSelected = document.querySelector(
+				'.volunteer-options input[name="interest[]"][value="Teach"]'
+			).checked;
+
+			if (teachSelected) {
 				teachingSubjects.style.display = 'block';
-			} else if (box.value === 'Teach' && !box.checked) {
+			} else {
 				teachingSubjects.style.display = 'none';
 
-				// Clear previously selected subjects
+				// Clear any previously selected subjects
 				subjectBoxes.forEach(subject => {
 					subject.checked = false;
 				});
@@ -494,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 
 	});
-	</script>
+</script>
 	
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 	
