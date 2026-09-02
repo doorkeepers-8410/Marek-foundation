@@ -554,36 +554,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	try{
 
-	const response=await fetch("/api/volunteer",{
-	method:"POST",
-	headers:{
-	"Content-Type":"application/json"
-	},
-	body:JSON.stringify(payload)
-	});
-
 	const text = await response.text();
 
 	console.log("Response from Cloudflare:");
 	console.log(text);
 
-	const result = JSON.parse(text);
+	let result = null;
 
-	if(result.success){
-
-	status.style.color="#2DBE7F";
-	status.innerHTML="✓ Thank you for volunteering! We'll be in touch soon.";
-
-	form.reset();
-
-	document.querySelectorAll(".option-card").forEach(card=>{
-	card.classList.remove("selected");
-	});
-
+	try {
+		result = JSON.parse(text);
+	} catch (parseError) {
+		console.warn("Response was not JSON.");
 	}
-	else{
 
-	throw new Error("Submission failed");
+	// If the request itself was successful, treat the submission as successful
+	if (response.ok && (!result || result.success !== false)) {
+
+		status.style.color = "#2DBE7F";
+		status.innerHTML = "✓ Thank you for volunteering! We'll be in touch soon.";
+
+		form.reset();
+
+		document.querySelectorAll(".option-card").forEach(card => {
+			card.classList.remove("selected");
+		});
+
+	} else {
+
+		throw new Error(
+			result?.error || result?.message || "Submission failed"
+		);
 
 	}
 
