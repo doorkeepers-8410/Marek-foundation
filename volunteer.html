@@ -291,19 +291,66 @@ document.addEventListener("DOMContentLoaded", function () {
 						<input id="email" type="email" name="email" placeholder="Email Address *" required>
 						<input id="phone" type="tel" name="phone" placeholder="Phone Number">
 						<input id="city" type="text" name="city" placeholder="City">
-						<h5 style="margin:40px 0 20px;">I would like to volunteer with Marek Foundation as:</h5>
+						<h5 style="margin:40px 0 20px;">I would like to volunteer as:</h5>
 						<div class="volunteer-options">
-						<input type="checkbox" id="teach" name="interest[]" value="Teaching">
-						<label for="teach" class="option-card"><span class="checkmark">✓</span><span>Facilitator</span></label>
-						<input type="checkbox" id="mentor" name="interest[]" value="Mentoring">
+						<input type="checkbox" id="teach" name="interest[]" value="Teach">
+						<label for="teach" class="option-card"><span class="checkmark">✓</span><span>Teach</span></label>
+						<input type="checkbox" id="mentor" name="interest[]" value="Mentor">
 						<label for="mentor" class="option-card"><span class="checkmark">✓</span><span>Mentor</span></label>
-						<input type="checkbox" id="events" name="interest[]" value="Events">
-						<label for="events" class="option-card"><span class="checkmark">✓</span><span>Teacher</span></label>
-						<input type="checkbox" id="fund" name="interest[]" value="Fundraising">
-						<label for="fund" class="option-card"><span class="checkmark">✓</span><span>Academic Support</span></label>
-						<input type="checkbox" id="admin" name="interest[]" value="Administration">
-						<label for="admin" class="option-card"><span class="checkmark">✓</span><span>Skill Trainer</span></label>
-						</div>						
+						<input type="checkbox" id="facilitate" name="interest[]" value="Facilitate">
+						<label for="facilitate" class="option-card"><span class="checkmark">✓</span><span>Facilitate</span></label>
+						<input type="checkbox" id="academic" name="interest[]" value="Academic">
+						<label for="academic" class="option-card"><span class="checkmark">✓</span><span>Academic Support</span></label>
+						<input type="checkbox" id="skill" name="interest[]" value="Skill">
+						<label for="skill" class="option-card"><span class="checkmark">✓</span><span>Skill Trainer</span></label>
+						</div>	
+						<!-- shown only when Teach is selected -->
+						<div id="teachingSubjects" style="display:none; margin-top:40px;">
+							<h5 style="margin:0 0 20px;">As a teacher, what subjects would you be interested in supporting?</h5>
+							<div class="volunteer-options">
+								<input type="checkbox" id="mathematics" name="subjects[]" value="Mathematics">
+								<label for="mathematics" class="option-card"><span class="checkmark">✓</span><span>Mathematics</span></label>
+
+								<input type="checkbox" id="science" name="subjects[]" value="Science">
+								<label for="science" class="option-card"><span class="checkmark">✓</span><span>Science</span></label>
+
+								<input type="checkbox" id="english" name="subjects[]" value="English">
+								<label for="english" class="option-card"><span class="checkmark">✓</span><span>English</span></label>
+
+								<input type="checkbox" id="tamil" name="subjects[]" value="Tamil">
+								<label for="tamil" class="option-card"><span class="checkmark">✓</span><span>Tamil</span></label>
+
+								<input type="checkbox" id="hindi" name="subjects[]" value="Hindi">
+								<label for="hindi" class="option-card"><span class="checkmark">✓</span><span>Hindi</span></label>
+
+								<input type="checkbox" id="socialScience" name="subjects[]" value="Social Science">
+								<label for="socialScience" class="option-card"><span class="checkmark">✓</span><span>Social Science</span></label>
+
+								<input type="checkbox" id="accountancy" name="subjects[]" value="Accountancy">
+								<label for="accountancy" class="option-card"><span class="checkmark">✓</span><span>Accountancy</span></label>
+
+								<input type="checkbox" id="commerce" name="subjects[]" value="Commerce">
+								<label for="commerce" class="option-card"><span class="checkmark">✓</span><span>Commerce</span></label>
+
+								<input type="checkbox" id="economics" name="subjects[]" value="Economics">
+								<label for="economics" class="option-card"><span class="checkmark">✓</span><span>Economics</span></label>
+
+								<input type="checkbox" id="computerScience" name="subjects[]" value="Computer Science">
+								<label for="computerScience" class="option-card"><span class="checkmark">✓</span><span>Computer Science</span></label>
+
+								<input type="checkbox" id="computerApplication" name="subjects[]" value="Computer Application">
+								<label for="computerApplication" class="option-card"><span class="checkmark">✓</span><span>Computer Application</span></label>
+
+								<input type="checkbox" id="physics" name="subjects[]" value="Physics">
+								<label for="physics" class="option-card"><span class="checkmark">✓</span><span>Physics</span></label>
+
+								<input type="checkbox" id="chemistry" name="subjects[]" value="Chemistry">
+								<label for="chemistry" class="option-card"><span class="checkmark">✓</span><span>Chemistry</span></label>
+
+								<input type="checkbox" id="biology" name="subjects[]" value="Biology">
+								<label for="biology" class="option-card"><span class="checkmark">✓</span><span>Biology</span></label>
+							</div>
+						</div>
 						<h5 style="margin:40px 0 20px;">Tell us a little about yourself and why you'd like to volunteer.</h5>
 						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
 						<div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-center-align" style="margin-top:40px;">
@@ -410,27 +457,42 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 
 	<script>
-	const boxes=document.querySelectorAll('.volunteer-options input');
-	const message=document.getElementById('selection-message');
+	const roleBoxes = document.querySelectorAll(
+		'.volunteer-options input[name="interest[]"]'
+	);
 
-	boxes.forEach(box=>{
-	box.addEventListener('change',()=>{
+	const teachingSubjects = document.getElementById('teachingSubjects');
+	const subjectBoxes = document.querySelectorAll(
+		'#teachingSubjects input[name="subjects[]"]'
+	);
 
-	const checked=document.querySelectorAll('.volunteer-options input:checked');
+	roleBoxes.forEach(box => {
 
-	if(checked.length>2){
-	box.checked=false;
-	message.textContent="You can select a maximum of two volunteer areas.";
-	message.classList.add("error");
+		box.addEventListener('change', () => {
 
-	setTimeout(()=>{
-	message.textContent="You may select up to two volunteer areas.";
-	message.classList.remove("error");
-	},3000);
+			// Allow only one volunteer role
+			if (box.checked) {
+				roleBoxes.forEach(otherBox => {
+					if (otherBox !== box) {
+						otherBox.checked = false;
+					}
+				});
+			}
 
-	}
+			// Show subjects only when Teach is selected
+			if (box.value === 'Teach' && box.checked) {
+				teachingSubjects.style.display = 'block';
+			} else if (box.value === 'Teach' && !box.checked) {
+				teachingSubjects.style.display = 'none';
 
-	});
+				// Clear previously selected subjects
+				subjectBoxes.forEach(subject => {
+					subject.checked = false;
+				});
+			}
+
+		});
+
 	});
 	</script>
 	
@@ -446,6 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	const submitBtn=form.querySelector('button[type="submit"]');
 
 	const areas=[];
+	const subjects=[];
 
 	document.querySelectorAll('.volunteer-options input:checked').forEach(box=>{
 	areas.push(box.value);
@@ -464,6 +527,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	phone:document.getElementById("phone").value.trim(),
 	city:document.getElementById("city").value.trim(),
 	areas:areas,
+	subjects:subjects,
 	message:document.getElementById("message").value.trim(),
 	turnstileToken: turnstileToken
 	};
