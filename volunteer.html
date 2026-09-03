@@ -353,6 +353,15 @@ document.addEventListener("DOMContentLoaded", function () {
 						</div>
 						<h5 style="margin:40px 0 20px;">Have you volunteered before, tell us more about your experience.</h5>
 						<textarea id="message" name="message" rows="7" placeholder="Share a few words about yourself and your motivation."></textarea>
+						<h5 style="margin:40px 0 20px;">How would you like to engage with Marek Foundation?</h5>
+						<div class="volunteer-options engagement-options">
+							<input type="radio" id="online" name="engagementMode" value="Online">
+							<label for="online" class="option-card"><span class="checkmark">✓</span><span>Online</span></label>
+							<input type="radio" id="inPerson" name="engagementMode" value="In person">
+							<label for="inPerson" class="option-card"><span class="checkmark">✓</span><span>In person</span></label>
+							<input type="radio" id="both" name="engagementMode" value="Both">
+							<label for="both" class="option-card"><span class="checkmark">✓</span><span>Both</span></label>
+						</div>
 						<div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-center-align" style="margin-top:40px;">
 						<div class="cf-turnstile" data-sitekey="0x4AAAAAADt8LvoXMCPxWZsf" style="margin-bottom:25px;"></div>
 						<button id="submitBtn" type="submit" class="mf-button"><span class="gdlr-core-content">Submit Application</span></button>
@@ -503,37 +512,62 @@ document.addEventListener("DOMContentLoaded", function () {
 	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 	
 	<script>
-		document.getElementById("volunteerForm").addEventListener("submit", async function(e) {
+	document.getElementById("volunteerForm").addEventListener("submit", async function(e) {
 
 		e.preventDefault();
 
 		const form = this;
 		const status = document.getElementById("formStatus");
 		const submitBtn = form.querySelector('button[type="submit"]');
-		const teachingSubjects = document.getElementById("teachingSubjects");
-
 		const areas = [];
 		const subjects = [];
 
-		// Collect volunteer role only
+		/* --------------------------------
+		   VOLUNTEER ROLE
+		-------------------------------- */
+
 		document.querySelectorAll(
 			'.volunteer-options input[name="interest[]"]:checked'
 		).forEach(box => {
 			areas.push(box.value);
 		});
 
-		// Collect teaching subjects only
+
+		/* --------------------------------
+		   TEACHING SUBJECTS
+		-------------------------------- */
+
 		document.querySelectorAll(
 			'#teachingSubjects input[name="subjects[]"]:checked'
 		).forEach(box => {
 			subjects.push(box.value);
 		});
 
+
+		/* --------------------------------
+		   MODE OF ENGAGEMENT
+		-------------------------------- */
+
+		const engagementMode =
+			document.querySelector(
+				'input[name="engagementMode"]:checked'
+			)?.value || "";
+
+
+		/* --------------------------------
+		   TURNSTILE
+		-------------------------------- */
+
 		const turnstileInput =
 			document.querySelector('[name="cf-turnstile-response"]');
 
 		const turnstileToken =
 			turnstileInput ? turnstileInput.value : "";
+
+
+		/* --------------------------------
+		   PAYLOAD
+		-------------------------------- */
 
 		const payload = {
 			formType: "volunteer",
@@ -544,26 +578,40 @@ document.addEventListener("DOMContentLoaded", function () {
 			areas: areas,
 			subjects: subjects,
 			message: document.getElementById("message").value.trim(),
+			engagementMode: engagementMode,
 			turnstileToken: turnstileToken
 		};
 
+
+		/* --------------------------------
+		   TURNSTILE VALIDATION
+		-------------------------------- */
+
 		if (!turnstileToken) {
-
 			status.style.color = "#d93025";
-			status.innerHTML = "Please complete the security verification.";
-
+			status.innerHTML =
+				"Please complete the security verification.";
 			submitBtn.disabled = false;
-
 			return;
 		}
+
+
+		/* --------------------------------
+		   SUBMITTING STATE
+		-------------------------------- */
 
 		submitBtn.disabled = true;
 		submitBtn.style.background = "#0069d9";
 		submitBtn.style.cursor = "not-allowed";
 		submitBtn.style.opacity = "0.9";
-
 		status.style.color = "#555";
-		status.innerHTML = "Submitting your application...";
+		status.innerHTML =
+			"Submitting your application...";
+
+
+		/* --------------------------------
+		   SEND TO CLOUDFLARE
+		-------------------------------- */
 
 		try {
 
@@ -581,15 +629,18 @@ document.addEventListener("DOMContentLoaded", function () {
 			console.log(text);
 
 			let result = null;
-
 			try {
 				result = JSON.parse(text);
 			} catch (parseError) {
 				console.warn("Response was not JSON.");
 			}
 
-			if (response.ok && (!result || result.success !== false)) {
 
+			/* --------------------------------
+			   SUCCESS
+			-------------------------------- */
+
+			if (response.ok && (!result || result.success !== false)) {
 				status.style.color = "#2DBE7F";
 				status.innerHTML =
 					"✓ Thank you for volunteering! We'll be in touch soon.";
@@ -600,7 +651,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					card.classList.remove("selected");
 				});
 
-				teachingSubjects.style.display = "none";
 
 			} else {
 
@@ -609,33 +659,38 @@ document.addEventListener("DOMContentLoaded", function () {
 					result?.message ||
 					"Submission failed"
 				);
+
 			}
+
 
 		} catch (err) {
 
 			console.error(err);
-
 			status.style.color = "#d93025";
 			status.innerHTML =
 				"Unable to submit your application. Please try again.";
-
 			submitBtn.disabled = false;
-			submitBtn.querySelector(".gdlr-core-content").textContent =
-				"Submitting Application...";
+			submitBtn.querySelector(
+				".gdlr-core-content"
+			).textContent = "Submit Application";
 			submitBtn.style.background = "#0069d9";
-			submitBtn.style.cursor = "not-allowed";
-			submitBtn.style.opacity = "0.9";
-
+			submitBtn.style.cursor = "pointer";
+			submitBtn.style.opacity = "1";
 			return;
 		}
 
+
+		/* --------------------------------
+		   RESET BUTTON
+		-------------------------------- */
+
 		submitBtn.disabled = false;
-		submitBtn.querySelector(".gdlr-core-content").textContent =
-			"Submit Application";
+		submitBtn.querySelector(
+			".gdlr-core-content"
+		).textContent = "Submit Application";
 		submitBtn.style.background = "#0082fa";
 		submitBtn.style.opacity = "1";
 		submitBtn.style.cursor = "pointer";
-
 	});
 	</script>
 	
