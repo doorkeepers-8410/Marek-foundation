@@ -79,20 +79,18 @@ document.addEventListener("DOMContentLoaded", function () {
                         <a class="kingster-mm-menu-button kingster-mobile-menu-button kingster-mobile-button-hamburger" href="#kingster-mobile-menu"><span></span></a>
                         <div class="kingster-mm-menu-wrap kingster-navigation-font" id="kingster-mobile-menu" data-slide="right">
                             <ul id="menu-main-navigation" class="m-menu">
-                                <li class="menu-item">
-                                    <a href="index.html">Home</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="about-us.html">About</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="program.html">Program</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="impact.html">Impact</a>
-                                </li>
+                                <li class="menu-item"> <a href="index.html">Home</a></li>
+                                <li class="menu-item"><a href="about-us.html">About</a></li>
+                                <li class="menu-item"><a href="program.html">Program</a></li>
+                                <li class="menu-item"><a href="impact.html">Impact</a></li>
                                 <li class="menu-item"><a href="involve.html">Get Involved</a></li>
-                                <li class="menu-item"><a href="stories.html">Stories</a></li>
+                                <li class="menu-item menu-item-has-children ">
+                                    <a href="#">Stories</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="polivakkam.html">Polivakkam</a></li>
+										<li class="menu-item"><a href="thideer.html">Thideer Nagar</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -108,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="kingster-top-bar-container kingster-container">
                         <div class="kingster-top-bar-container-inner clearfix">
                             <div class="kingster-top-bar-left kingster-item-pdlr">
-                                <a href="#" style="margin-right: 30px;">Curriculum</a>
+                                <!--<a href="#" style="margin-right: 30px;">Curriculum</a>-->
                             </div>
                             <div class="kingster-top-bar-right kingster-item-pdlr">
                                 <div class="kingster-top-bar-right-social">
@@ -127,15 +125,9 @@ document.addEventListener("DOMContentLoaded", function () {
                             <div class="kingster-navigation kingster-item-pdlr clearfix">
                                 <div class="kingster-main-menu" id="kingster-main-menu">
                                     <ul id="menu-main-navigation-1" class="sf-menu">
-                                        <li class="menu-item menu-item-home current-menu-item page_item page-item-6208 current_page_item  kingster-normal-menu">
-                                            <a href="index.html">Home</a>
-                                        </li>
-                                        <li class="menu-item kingster-normal-menu">
-                                            <a href="about-us.html" class="sf-with-ul-pre">About</a>
-                                        </li>
-                                        <li class="menu-item kingster-mega-menu">
-                                            <a href="program.html" class="sf-with-ul-pre">Programs</a>
-                                        </li>
+                                        <li class="menu-item menu-item-home current-menu-item page_item page-item-6208 current_page_item  kingster-normal-menu"><a href="index.html">Home</a></li>
+                                        <li class="menu-item kingster-normal-menu"><a href="about-us.html" class="sf-with-ul-pre">About</a></li>
+                                        <li class="menu-item kingster-mega-menu"><a href="program.html" class="sf-with-ul-pre">Programs</a></li>
                                         <li class="kingster-center-nav-menu-item">
                                             <div class="kingster-logo kingster-item-pdlr">
                                                 <div class="kingster-logo-inner">
@@ -143,13 +135,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="menu-item kingster-normal-menu">
-                                            <a href="impact.html" class="sf-with-ul-pre">Impact</a>
+                                        <li class="menu-item kingster-normal-menu"><a href="impact.html" class="sf-with-ul-pre">Impact</a></li>
+                                        <li class="menu-item kingster-normal-menu"><a href="involve.html" class="sf-with-ul-pre">Get Involved</a></li>
+                                        <li class="menu-item menu-item-has-children  kingster-normal-menu">
+                                            <a href="#.html" class="sf-with-ul-pre">Stories</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item"><a href="polivakkam.html">Polivakkam</a></li>
+												<li class="menu-item"><a href="thideer.html">Thideer Nagar</a></li>
+                                            </ul>
                                         </li>
-                                        <li class="menu-item kingster-normal-menu">
-                                            <a href="involve.html" class="sf-with-ul-pre">Get Involved</a></li>
-                                        <li class="menu-item kingster-normal-menu"><a href="stories.html">Stories</a></li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -161,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 </header>
                 <!-- header -->
             </div>
-
 
             <div class="kingster-page-wrapper" id="kingster-page-wrapper">
                 <div class="gdlr-core-page-builder-body">
@@ -366,8 +359,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     <p>
                                         <img src="upload/Logo-MF.svg" alt="" width="160" /><br />
                                         <span class="gdlr-core-space-shortcode" style="margin-top: 0px;"></span><br />
-                                        Times Square Layout,<br />
-                                        Muttukadu, <br />
+                                        Muttukadu<br />
+                                        Chinglepet, Kanchipuram, <br />
 										Chennai 603 112.
                                     </p>
                                     <p>
@@ -386,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <span class="clear"></span>
                                 <div class="menu-our-campus-container">
                                     <ul id="menu-our-campus" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">1-2-3 &gt; 1</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="program.html">1-2-3 &gt; 1</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -397,12 +390,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <span class="clear"></span>
                                 <div class="menu-academics-container">
                                     <ul id="menu-academics" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-plain">
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Kilpauk</a></li>
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Muttukadu</a></li>
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Padi</a></li>
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Kupam</a></li>
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Avadi</a></li>
-                                        <li class="menu-item  kingster-normal-menu"><a href="#">Navalur</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="polivakkam.html">Polivakkam</a></li>
+                                        <li class="menu-item  kingster-normal-menu"><a href="thideer.html">Thideer Nagar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -411,7 +400,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
                 <div class="kingster-copyright-wrapper">
                     <div class="kingster-copyright-container kingster-container clearfix">
-                        <div class="kingster-copyright-left kingster-item-pdlr">Copyright All Right Reserved 2026, Marek Foundation</div>
+                        <div class="kingster-copyright-left kingster-item-pdlr">Copyright All Rights Reserved 2026, Marek Foundation</div>
                         <div class="kingster-copyright-right kingster-item-pdlr">
                             <div class="gdlr-core-social-network-item gdlr-core-item-pdb gdlr-core-none-align" style="padding-bottom: 0px;">
                                 <a href="#" target="_blank" class="gdlr-core-social-network-icon" title="facebook"><i class="fa fa-facebook"></i></a>
